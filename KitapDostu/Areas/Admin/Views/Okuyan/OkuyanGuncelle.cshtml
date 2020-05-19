@@ -1,0 +1,42 @@
+﻿@model KitapDostu.Models.Okuyan
+
+@{
+    ViewBag.Title = "OkuyanGuncelle";
+}
+
+<h2>OkuyanGuncelle</h2>
+
+@using (Html.BeginForm("OkuyanGuncelle", "Okuyan", FormMethod.Post))
+{@Html.HiddenFor(o => o.Okuyanid)
+<div class="form-group">
+    @Html.LabelFor(o => o.OkuyanAd);
+    @Html.TextBoxFor(o => o.OkuyanAd, new { @class = "form-control" })
+    <label id="hataAd" style="display:none;color:red">Ad alanı boş olamaz</label>
+
+</div>
+<div class="form-group">
+    @Html.LabelFor(o => o.OkuyanSoyad);
+    @Html.TextBoxFor(o => o.OkuyanSoyad, new { @class = "form-control" })
+    <label id="hataSoyad" style="display:none;color:red">Soyad boş olamaz</label>
+
+</div>
+<input type="submit" name="button" value="Guncelle" class="btn btn-danger" onclick="return BoslukKontrol()" />
+}
+@section scripts{
+    <script>
+        function BoslukKontrol() {
+            var hatayok = true;
+            if ($("#OkuyanAd").val() == "" || $("#OkuyanSoyad").val() == "" ) {
+                $("#hataSoyad").show();
+                $("#hataAd").show();
+                
+
+                hatayok = false;
+            }
+
+            return hatayok;
+        }
+
+    </script>
+
+}

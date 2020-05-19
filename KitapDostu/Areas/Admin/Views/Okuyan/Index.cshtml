@@ -1,0 +1,39 @@
+﻿@using KitapDostu.Models
+@{
+    ViewBag.Title = "Okuyan Listesi";
+}
+@model IEnumerable<Okuyan>
+<h2>Okuyucu Listesi</h2>
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>Adı</th>
+            <th>Soyadı</th>
+            <th>İşlemler</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.OkuyanAd</td>
+                <td>@item.OkuyanSoyad</td>
+               
+
+
+                <td>
+
+                    <a href="/Admin/Okuyan/OkuyanGuncelle/@item.Okuyanid" class="btn btn-sm btn-primary">Guncelle</a>
+                    <a href="/Admin/Okuyan/OkuyanSil/@item.Okuyanid" class="btn btn-danger" onclick="return confirm('Bu kişiyi silmek istediğinize emin misiniz?')">Sil</a>
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+
+</table>
+

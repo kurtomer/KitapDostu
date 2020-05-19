@@ -1,0 +1,48 @@
+﻿@model KitapDostu.Models.Kitap
+
+@{
+    ViewBag.Title = "KitapGuncelle";
+}
+
+<h2>KitapGuncelle</h2>
+
+@using (Html.BeginForm("KitapGuncelle", "Kitap", FormMethod.Post))
+{@Html.HiddenFor(k => k.Kitapid)
+<div class="form-group">
+    @Html.LabelFor(k => k.KitapAdi);
+    @Html.TextBoxFor(k => k.KitapAdi, new { @class = "form-control" })
+    <label id="hataKtp" style="display:none;color:red">Kitap Adı Boş olamaz</label>
+
+</div>
+<div class="form-group">
+    @Html.LabelFor(k => k.Yazar);
+    @Html.TextBoxFor(k => k.Yazar, new { @class = "form-control" })
+    <label id="hataYzr" style="display:none;color:red">Yazar Adı Boş olamaz</label>
+
+</div>
+<div class="form-group">
+    @Html.LabelFor(k => k.Sayfa);
+    @Html.TextBoxFor(k => k.Sayfa, new { @class = "form-control" })
+    <label id="hataSyf" style="display:none;color:red">Sayfa Sayısı Boş olamaz</label>
+
+</div>
+<input type="submit" name="button" value="Guncelle" class="btn btn-danger" onclick="return BoslukKontrol()"/>
+}
+@section scripts{
+    <script>
+        function BoslukKontrol() {
+            var hatayok = true;
+            if ($("#KitapAdi").val() == "" || $("#Yazar").val() == "" || $("#Sayfa").val() == "") {
+                $("#hataKtp").show();
+                $("#hataYzr").show();
+                $("#hataSyf").show();
+               
+                hatayok = false;
+            }
+
+            return hatayok;
+        }
+
+    </script>
+
+}

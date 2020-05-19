@@ -1,0 +1,39 @@
+﻿@using KitapDostu.Models
+@{
+    ViewBag.Title = "Index";
+}
+@model IEnumerable<Kitap>
+<h2>Kitap Listesi</h2>
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>Kitap Adı</th>
+            <th>Yazar Adı</th>
+            <th>Sayfa Sayısı</th>
+            <th>İşlemler</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.KitapAdi</td>
+            <td>@item.Yazar</td>
+            <td>@item.Sayfa</td>
+
+
+            <td>
+
+                <a href="/Admin/Kitap/KitapGuncelle/@item.Kitapid" class="btn btn-sm btn-primary">Guncelle</a>
+                <a href="/Admin/Kitap/KitapSil/@item.Kitapid" class="btn btn-danger" onclick="return confirm('Bu kitabı silmek istediğinize emin misiniz?')">Sil</a>
+            </td>
+        </tr>
+        }
+
+
+    </tbody>
+
+</table>
